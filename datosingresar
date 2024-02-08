@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validación de Datos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .error {
+      color: red;
+      margin-top: -10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Validación de Datos</h1>
+  <form id="formulario" onsubmit="return validarFormulario()">
+    <label for="codigo">Código:</label>
+    <input type="text" id="codigo" name="codigo" required>
+    <div id="errorCodigo" class="error"></div>
+
+    <label for="extension">Extensión:</label>
+    <input type="text" id="extension" name="extension" required>
+    <div id="errorExtension" class="error"></div>
+
+    <label for="tipoSolicitud">Tipo de Solicitud:</label>
+    <select id="tipoSolicitud" name="tipoSolicitud" required>
+      <option value="">Selecciona un tipo</option>
+      <option value="solicitud1">Solicitud 1</option>
+      <option value="solicitud2">Solicitud 2</option>
+    </select>
+    <div id="errorTipoSolicitud" class="error"></div>
+
+    <label for="documentoIdentidad">Documento de Identidad:</label>
+    <input type="text" id="documentoIdentidad" name="documentoIdentidad" required>
+    <div id="errorDocumentoIdentidad" class="error"></div>
+
+    <label for="fechaImpresion">Fecha de Impresión:</label>
+    <input type="date" id="fechaImpresion" name="fechaImpresion" required>
+    <div id="errorFechaImpresion" class="error"></div>
+
+    <label for="solicitante">Solicitante:</label>
+    <input type="text" id="solicitante" name="solicitante" required>
+    <div id="errorSolicitante" class="error"></div>
+
+    <label for="carrera">Carrera:</label>
+    <input type="text" id="carrera" name="carrera" required>
+    <div id="errorCarrera" class="error"></div>
+
+    <label for="nivel">Nivel:</label>
+    <input type="text" id="nivel" name="nivel" required>
+    <div id="errorNivel" class="error"></div>
+
+    <label for="asunto">Asunto:</label>
+    <textarea id="asunto" name="asunto" rows="4" required></textarea>
+    <div id="errorAsunto" class="error"></div>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <script>
+    function validarFormulario() {
+      var codigo = document.getElementById('codigo').value;
+      var extension = document.getElementById('extension').value;
+      var tipoSolicitud = document.getElementById('tipoSolicitud').value;
+      var documentoIdentidad = document.getElementById('documentoIdentidad').value;
+      var fechaImpresion = document.getElementById('fechaImpresion').value;
+      var solicitante = document.getElementById('solicitante').value;
+      var carrera = document.getElementById('carrera').value;
+      var nivel = document.getElementById('nivel').value;
+      var asunto = document.getElementById('asunto').value;
+
+      var errorCodigo = document.getElementById('errorCodigo');
+      var errorExtension = document.getElementById('errorExtension');
+      var errorTipoSolicitud = document.getElementById('errorTipoSolicitud');
+      var errorDocumentoIdentidad = document.getElementById('errorDocumentoIdentidad');
+      var errorFechaImpresion = document.getElementById('errorFechaImpresion');
+      var errorSolicitante = document.getElementById('errorSolicitante');
+      var errorCarrera = document.getElementById('errorCarrera');
+      var errorNivel = document.getElementById('errorNivel');
+      var errorAsunto = document.getElementById('errorAsunto');
+
+      // Validación del código
+      if (codigo.length === 0) {
+        errorCodigo.innerHTML = 'Por favor, ingresa un código.';
+        return false;
+      } else {
+        errorCodigo.innerHTML = '';
+      }
+
+      // Validación de la extensión
+      if (extension.length === 0) {
+        errorExtension.innerHTML = 'Por favor, ingresa una extensión.';
+        return false;
+      } else {
+        errorExtension.innerHTML = '';
+      }
+
+      // Validación del tipo de solicitud
+      if (tipoSolicitud === '') {
+        errorTipoSolicitud.innerHTML = 'Selecciona un tipo de solicitud.';
+        return false;
+      } else {
+        errorTipoSolicitud.innerHTML = '';
+      }
+
+      // Validación del documento de identidad
+      if (documentoIdentidad.length === 0) {
+        errorDocumentoIdentidad.innerHTML = 'Por favor, ingresa un documento de identidad.';
+        return false;
+      } else {
+        errorDocumentoIdentidad.innerHTML = '';
+      }
+
+      // Validación de la fecha de impresión
+      if (fechaImpresion.length === 0) {
+        errorFechaImpresion.innerHTML = 'Por favor, selecciona una fecha de impresión.';
+        return false;
+      } else {
+        errorFechaImpresion.innerHTML = '';
+      }
+
+      // Validación del solicitante
+      if (solicitante.length === 0) {
+        errorSolicitante.innerHTML = 'Por favor, ingresa el nombre del solicitante.';
+        return false;
+      } else {
+        errorSolicitante.innerHTML = '';
+      }
+
+      // Validación de la carrera
+      if (carrera.length === 0) {
+        errorCarrera.innerHTML = 'Por favor, ingresa la carrera.';
+        return false;
+      } else {
+        errorCarrera.innerHTML = '';
+      }
+
+      // Validación del nivel
+      if (nivel.length === 0) {
+        errorNivel.innerHTML = 'Por favor, ingresa el nivel.';
